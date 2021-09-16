@@ -4,7 +4,7 @@ interface MenuItemProps {
   url?: string;
   text: string;
   icon: any;
-  onClick?: (evento: any) => {}
+  onClick?: (evento: any) => void
 }
 
 const Li = styled.li`
@@ -51,7 +51,7 @@ export default function MenuItem(props: MenuItemProps) {
      
     </Li>
       </Link> :
-       <Li onClick={()=>{}}>
+       <Li onClick={props.onClick}>
        {props.icon}
        <TextLi>{props.text}</TextLi>
     

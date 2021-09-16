@@ -47,7 +47,7 @@ export default function MenuLateral() {
         <MenuItem url="/notifications" text={"Notifications"} icon={IconBell} />
       </Ul>
       <Ul>
-      <MenuItem  text={"Logout"} icon={IconLogout} />
+      <MenuItem  text={"Logout"} icon={IconLogout} onClick={(e)=> {  console.log("teste")}} />
       </Ul>
     </Aside>
   );
