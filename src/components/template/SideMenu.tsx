@@ -1,7 +1,21 @@
 import { IconAdjust, IconBell, IconHome, IconLogout } from "../icons";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
+import {  AppContext } from "../../data/context/AppContext";
+import { useContext, useEffect } from "react";
+import { darkTheme, lightTheme } from "../../assets/themes/themes";
 
+
+
+const Aside = styled.aside`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: ${(props:any)=> props.dark};
+
+
+`;
 const Ul = styled.ul`
   display: flex;
   align-items: center;
@@ -17,14 +31,6 @@ const Ul = styled.ul`
   }
 `;
 
-const Aside = styled.aside`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-
-`;
 
 const BoxLogo = styled.div `
     margin: 2rem 0rem; 
@@ -37,17 +43,23 @@ const BoxLogo = styled.div `
 
 `
 
-export default function MenuLateral() {
+
+export default function MenuLateral(props:any) {
+
+  
+
+
+
   return (
-    <Aside>
+    <Aside dark={props.theme === 'light'? lightTheme.body : darkTheme.body } >
         <BoxLogo/>
       <Ul>
-        <MenuItem url="/" text={"Home"} icon={IconHome} />
-        <MenuItem url="/adjust" text={"Adjust"} icon={IconAdjust} />
-        <MenuItem url="/notifications" text={"Notifications"} icon={IconBell} />
+        <MenuItem url="/" text={"Home"} icon={IconHome} theme={props.theme}  />
+        <MenuItem url="/adjust" text={"Adjust"} icon={IconAdjust} theme={props.theme}   />
+        <MenuItem url="/notifications" text={"Notifications"} theme={props.theme}    icon={IconBell} />
       </Ul>
       <Ul>
-      <MenuItem  text={"Logout"} icon={IconLogout} onClick={(e)=> {  console.log("teste")}} />
+      <MenuItem   text={"Logout"} icon={IconLogout} className={'red'} onClick={(e)=> {  console.log("teste")}} />
       </Ul>
     </Aside>
   );

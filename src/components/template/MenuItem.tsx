@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { darkTheme, lightTheme } from "../../assets/themes/themes";
 interface MenuItemProps {
   url?: string;
   text: string;
   icon: any;
-  onClick?: (evento: any) => void
+  onClick?: (evento: any) => void;
+  className?: string
+  theme?: any
 }
 
 const Li = styled.li`
-  background-color: white;
+  color: ${(props) => props.dark};
   width: 2rem;
   margin-right: 2.5rem;
   padding: 0rem 0.1rem;
@@ -17,6 +20,7 @@ const Li = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 
   :hover {
     cursor: pointer;
@@ -30,14 +34,8 @@ const TextLi = styled.p`
 `;
 
 export default function MenuItem(props: MenuItemProps) {
-  function renderLink() {
-    return (
-      <Link href={props.url}>
-        {props.icon}
-        <TextLi>{props.text}</TextLi>
-      </Link>
-    );
-  }
+
+
 
   return (
 
@@ -45,15 +43,17 @@ export default function MenuItem(props: MenuItemProps) {
 
     props.url? 
       <Link href={props.url} > 
-    <Li>
+    <Li dark={props.theme === 'light'? lightTheme.color : darkTheme.color}>
         {props.icon}
         <TextLi>{props.text}</TextLi>
      
     </Li>
       </Link> :
-       <Li onClick={props.onClick}>
+
+       <Li onClick={props.onClick}  dark={'red'}>
        {props.icon}
-       <TextLi>{props.text}</TextLi>
+       <TextLi>{props.text}
+       </TextLi>
     
    </Li>
   );
