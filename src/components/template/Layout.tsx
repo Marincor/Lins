@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../data/context/AppContext";
 
-
 interface LayoutProps {
   title: string;
   subtitle: string;
@@ -18,13 +17,8 @@ const BoxLayout = styled.div`
   width: 100vw;
 `;
 
-
-
 export default function Layout(props: LayoutProps) {
   const { theme, setTheme } = useContext(AppContext);
-
-
- 
 
   return (
     <BoxLayout>
@@ -39,7 +33,6 @@ export default function Layout(props: LayoutProps) {
           padding: "4rem",
         }}
       >
-      
         <Header title={props.title} subtitle={props.subtitle} />
         <Content>{props.children}</Content>
       </div>
