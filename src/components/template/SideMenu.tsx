@@ -1,9 +1,9 @@
 import { IconAdjust, IconBell, IconHome, IconLogout } from "../icons";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
-import {  AppContext } from "../../data/context/AppContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { darkTheme, lightTheme } from "../../assets/themes/themes";
+import { AuthContext } from "../../data/context/AuthContext";
 
 
 
@@ -46,7 +46,9 @@ const BoxLogo = styled.div `
 
 export default function MenuLateral(props:any) {
 
-  
+  const {signout} = useContext(AuthContext);
+
+
 
 
 
@@ -59,7 +61,7 @@ export default function MenuLateral(props:any) {
         <MenuItem url="/notifications" text={"Notifications"} theme={props.theme}    icon={IconBell} />
       </Ul>
       <Ul>
-      <MenuItem   text={"Logout"} icon={IconLogout} className={'red'} onClick={(e)=> {  console.log("teste")}} />
+      <MenuItem   text={"Logout"} icon={IconLogout} className={'red'} onClick={(e)=> {  signout()}} />
       </Ul>
     </Aside>
   );

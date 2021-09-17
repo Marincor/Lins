@@ -1,6 +1,7 @@
 
 import '../styles/globals.css'
 import {AppProvider} from '../data/context/AppContext'
+import {AuthProvider} from '../data/context/AuthContext'
 function MyApp({ Component, pageProps }) {
 
 
@@ -11,9 +12,11 @@ function MyApp({ Component, pageProps }) {
   
 
 <AppProvider>
+<AuthProvider> 
 
   
   <Component {...pageProps} />
+</AuthProvider>
 </AppProvider>
 
   )
