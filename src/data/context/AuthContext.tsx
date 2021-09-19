@@ -29,12 +29,16 @@ export function AuthProvider(props) {
    
 
       const cancel =   firebase.auth().onIdTokenChanged(configSession)
-
+  
       return () => cancel()
+
+    
     
     } else {
 
+  
       setLoading(false)
+  
     }
  
 
@@ -43,7 +47,7 @@ export function AuthProvider(props) {
 
  
 
-  },[])
+  },[user?.email])
 
   function configSession (userFirebase) {
 
@@ -52,7 +56,7 @@ export function AuthProvider(props) {
       setLoading(false)
       setUser(userFirebase)
       manageCookie(true)
-      return console.log(user?.email)
+      return user?.email
 
     }else {
 
