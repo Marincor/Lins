@@ -82,6 +82,39 @@ export function AuthProvider(props) {
       setLoading(false)
     }
   };
+
+  const signinEmail = async (email, password) => {
+    try {
+      setLoading(true)
+      return await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((res) => {
+
+          configSession(res.user)
+          Router.push("/");
+        });
+    } finally {
+      setLoading(false)
+    }
+  };
+
+  const register = async (email, password) => {
+    try {
+      setLoading(true)
+      return await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((res) => {
+
+         configSession(res.user)
+          Router.push("/");
+        });
+    } finally {
+      setLoading(false)
+    }
+  };
+
   const signinGit = async () => {
     try {
       setLoading(true)
@@ -118,6 +151,8 @@ export function AuthProvider(props) {
         user,
         loading,
         signin,
+        signinEmail,
+        register,
         signinGit,
         signout,
       }}

@@ -40,10 +40,10 @@ const ButtonSubmit = styled.button`
   }
 `;
 const ButtonFirebase = styled(ButtonSubmit)`
-  background-color: red;
+  background-color: ${(props) => props.secondarybg? props.secondarybg : 'red' };
 
   :hover {
-    background-color: #ee5e5e;
+    background-color:${(props) => props.secondarybgh? props.secondarybgh : '#ee5e5e' };
   }
 `;
 
@@ -69,20 +69,50 @@ const LinkModo = styled.a`
   }
 `;
 
+
+const AlertErro = styled.h2 `
+
+
+background-color: #e06d6d;
+color: white;
+display: flex;
+text-align: center;
+font-size: 0.8rem;
+padding: 2rem;
+border-radius: 1rem;
+
+`
+
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [modo, setModo] = useState<"login" | "register">("login");
 
-  const { user, signin, signinGit } = useContext(AuthContext);
+  const [erro, setErro] = useState(null)
+
+  const { user, signin, signinGit, signinEmail, register } = useContext(AuthContext);
 
   console.log(user);
 
-  function submit() {
-    if (modo === "login") {
-      console.log("login");
-    } else {
-      console.log("register");
+  async function submit() {
+
+    try{
+
+
+      if (modo === "login") {
+       
+       await   signinEmail(email, password)
+      } else {
+        
+         await register(email, password)
+      }
+    } catch(e) {
+
+      setErro(e.message)
+
+      setTimeout(() => {
+        setErro(null)
+      }, 5000);
     }
   }
 
@@ -91,6 +121,7 @@ export default function Auth() {
       <TitleAuth>
         {modo === "login" ? "Login with your account" : "Sign in"}{" "}
       </TitleAuth>
+       { erro?   <AlertErro>{erro}</AlertErro> : false}
       <AuthInput
         required={false}
         type="email"
@@ -118,7 +149,7 @@ export default function Auth() {
 
       <IconImg src={GithubIcon} />
 
-      <ButtonFirebase onClick={signinGit}>Enter with Github</ButtonFirebase>
+      <ButtonFirebase secondarybg={'darkgray'} secondarybgh={'gray'} onClick={signinGit}>Enter with Github</ButtonFirebase>
 
       {modo === "login" ? (
         <p>
