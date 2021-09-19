@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { AppContext } from "../../data/context/AppContext";
 import { IconMoon, IconSun } from "../icons";
+import Avatar from "./Avatar";
 interface HeaderProps {
   title: string;
   subtitle: string;
@@ -11,6 +12,7 @@ interface HeaderProps {
 const BoxHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 `;
 const ButtonTheme = styled.button`
   align-items: center;
@@ -69,7 +71,7 @@ export default function Header(props: HeaderProps) {
 
   return (
     <BoxHeader>
-      <Title title={props.title} subtitle={props.subtitle} />
+      <Avatar />
       <ButtonTheme
         onClick={changeTheme}
         bg={
@@ -85,6 +87,8 @@ export default function Header(props: HeaderProps) {
         </TitleButton>
         <BoxIcon> {theme === "light" ? IconMoon : IconSun}</BoxIcon>
       </ButtonTheme>
+      <Title title={props.title} subtitle={props.subtitle} />
+     
     </BoxHeader>
   );
 }
