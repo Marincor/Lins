@@ -35,7 +35,7 @@ export default function Layout(props: LayoutProps) {
 
 
 
-console.log(theme)
+
 
   return (
 

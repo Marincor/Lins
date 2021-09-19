@@ -16,17 +16,13 @@ export default function Avatar () {
 
 const {user} = useContext(AuthContext)
 
-useEffect(()=>{
-    console.log(user)
 
-
-},[])
 
 
 
     return(
 
-          <Link href='/perfil'>
+          <Link href='/profile'>
               <Image src={user?.photoURL || AvatarIcon} alt="user avatar" />
           </Link>  
 
