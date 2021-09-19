@@ -15,18 +15,27 @@ interface LayoutProps {
 
 const BoxLayout = styled.div`
   display: flex;
-  height: 100vh;
+  height: auto;
   width: 100vw;
+  background-color: ${(props) => props.bg};
+
+
+  @media screen and (min-width:768px){
+
+    height: 100vh;
+    width: 100vw;
+
+  }
+  
 `;
 
 export default function Layout(props: LayoutProps) {
 
   const { theme } = useContext(AppContext);
-  const {user} = useContext(AuthContext);
 
 
 
-
+console.log(theme)
 
   return (
 
@@ -36,16 +45,19 @@ export default function Layout(props: LayoutProps) {
 
 
 
-    <BoxLayout>
+    <BoxLayout bg={theme === 'light'? 'lightblue':'gray'} >
     <MenuLateral theme={theme} />
 
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "grey",
         width: "100%",
-        padding: "4rem",
+        overflow: "hidden",
+        height: '100vh',
+        marginLeft: '2rem',
+        marginRight: '2rem'
+       
       }}
       >
       <Header title={props.title} subtitle={props.subtitle} />

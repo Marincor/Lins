@@ -38,7 +38,7 @@ function renderLoading() {
   autoplay
   loop
   src={AnimationLoading}
-  style={{ height: '500px', width: '500px' }}
+  style={{ height: '300px', width: '300px' }}
 >
 </Player>
       

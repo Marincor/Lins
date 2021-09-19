@@ -1,4 +1,4 @@
-import { IconAdjust, IconBell, IconHome, IconLogout } from "../icons";
+import {  IconBell, IconHome, IconLogout, IconProfile } from "../icons";
 import MenuItem from "./MenuItem";
 import styled from "styled-components";
 import { useContext } from "react";
@@ -9,6 +9,7 @@ import { AuthContext } from "../../data/context/AuthContext";
 
 const Aside = styled.aside`
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -57,7 +58,7 @@ export default function MenuLateral(props:any) {
         <BoxLogo/>
       <Ul>
         <MenuItem url="/" text={"Home"} icon={IconHome} theme={props.theme}  />
-        <MenuItem url="/adjust" text={"Adjust"} icon={IconAdjust} theme={props.theme}   />
+        <MenuItem url="/profile" text={"Profile"} icon={IconProfile} theme={props.theme}   />
         <MenuItem url="/notifications" text={"Notifications"} theme={props.theme}    icon={IconBell} />
       </Ul>
       <Ul>

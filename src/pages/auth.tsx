@@ -4,6 +4,7 @@ import styled from "styled-components";
 import GoogleIcon from "../assets/img/google.svg";
 import GithubIcon from '../assets/img/github-icon-1.svg'
 import { AuthContext } from "../data/context/AuthContext";
+import { IconError } from "../components/icons";
 
 const BoxAuth = styled.div`
   background-position: center;
@@ -80,6 +81,8 @@ text-align: center;
 font-size: 0.8rem;
 padding: 2rem;
 border-radius: 1rem;
+justify-content: center;
+align-items: center;
 
 `
 
@@ -121,7 +124,7 @@ export default function Auth() {
       <TitleAuth>
         {modo === "login" ? "Login with your account" : "Sign in"}{" "}
       </TitleAuth>
-       { erro?   <AlertErro>{erro}</AlertErro> : false}
+       { erro?   <AlertErro> {IconError} {erro}</AlertErro> : false}
       <AuthInput
         required={false}
         type="email"
