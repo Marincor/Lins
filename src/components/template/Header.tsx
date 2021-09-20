@@ -54,7 +54,7 @@ export default function Header(props: HeaderProps) {
   const { theme, setTheme } = useContext(AppContext);
 
   function changeTheme() {
-    console.log("teste");
+  
 
     setTheme(theme === "light" ? "dark" : "light");
 

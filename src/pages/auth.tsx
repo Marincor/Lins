@@ -95,7 +95,6 @@ export default function Auth() {
 
   const { user, signin, signinGit, signinEmail, register } = useContext(AuthContext);
 
-  console.log(user);
 
   async function submit() {
 
